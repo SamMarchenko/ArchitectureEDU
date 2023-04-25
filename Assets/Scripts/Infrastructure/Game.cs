@@ -1,7 +1,7 @@
 ﻿using CodeBase.Logic;
 using DefaultNamespace.Infrastructure;
 using DefaultNamespace.Infrastructure.Services;
-using Services.Input;
+using Logic;
 
 public class Game
 {

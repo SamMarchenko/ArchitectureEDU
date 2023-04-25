@@ -1,12 +1,14 @@
 ﻿using System;
-using DefaultNamespace.CameraLogic;
+using DefaultNamespace.Data;
 using DefaultNamespace.Infrastructure.Services;
-using Services.Input;
+using Infrastructure.Services.Input;
+using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
-    public class HeroMove : MonoBehaviour
+    public class HeroMove : MonoBehaviour, ISavedProgress
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private float _movementSpeed;
@@ -16,7 +18,7 @@ namespace DefaultNamespace
         {
             _inputService = AllServices.Container.Single<IInputService>();
         }
-        
+
 
         private void Update()
         {
@@ -30,8 +32,35 @@ namespace DefaultNamespace
 
                 transform.forward = movementVector;
             }
+
             movementVector += Physics.gravity;
-            _characterController.Move(_movementSpeed*movementVector*Time.deltaTime);
+            _characterController.Move(_movementSpeed * movementVector * Time.deltaTime);
+        }
+
+        public void UpdateProgress(PlayerProgress progress) =>
+            progress.WorldData.PositionOnLevel =
+                new PositionOnLevel(CurrentLevel(), transform.position.AsVector3Data());
+
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if (CurrentLevel() == progress.WorldData.PositionOnLevel.Level)
+            {
+                var savedPosition = progress.WorldData.PositionOnLevel.Position;
+                if (savedPosition != null)
+                {
+                    Warp(to: savedPosition);
+                }
+            }    
+        }
+
+        private static string CurrentLevel() => SceneManager.GetActiveScene().name;
+
+        private void Warp(Vector3Data to)
+        {
+            _characterController.enabled = false;
+            transform.position = to.AsUnityVector().AddY(_characterController.height);
+            _characterController.enabled = true;
         }
     }
 }

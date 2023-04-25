@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using CodeBase.Logic;
 using DefaultNamespace.Infrastructure.Services;
 using Infrastructure.Factory;
+using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.SaveLoad;
 using Infrastructure.States;
+using Logic;
 
 namespace DefaultNamespace.Infrastructure
 {
@@ -17,7 +20,12 @@ namespace DefaultNamespace.Infrastructure
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, services.Single<IGameFactory>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain,
+                    services.Single<IGameFactory>(), services.Single<IPersistentProgressService>()),
+                [typeof(LoadProgressState)] = new LoadProgressState
+                (this,
+                    services.Single<IPersistentProgressService>(),
+                    services.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };
         }
@@ -27,14 +35,14 @@ namespace DefaultNamespace.Infrastructure
             IState state = ChangeState<TState>();
             state.Enter();
         }
-        
+
 
         public void Enter<TState, TPayLoad>(TPayLoad payLoad) where TState : class, IPayLoadedState<TPayLoad>
         {
             TState state = ChangeState<TState>();
             state.Enter(payLoad);
         }
-        
+
         private TState ChangeState<TState>() where TState : class, IExitableState
         {
             _activeState?.Exit();

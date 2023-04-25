@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DefaultNamespace.CameraLogic
+namespace Logic.CameraLogic
 {
     public class CameraFollow : MonoBehaviour
     {
