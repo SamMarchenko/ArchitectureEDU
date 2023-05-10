@@ -11,7 +11,7 @@ namespace Infrastructure.Services.SaveLoad
         
         private readonly IPersistentProgressService _progressService;
         private readonly IGameFactory _gameFactory;
-        
+
 
         public SaveLoadService(IPersistentProgressService progressService, IGameFactory gameFactory)
         {
@@ -19,7 +19,7 @@ namespace Infrastructure.Services.SaveLoad
             _gameFactory = gameFactory;
         }
 
-        public void SaveProgress()
+        public void  SaveProgress()
         {
             foreach (var progressWriter in _gameFactory.ProgressWriters)
                 progressWriter.UpdateProgress(_progressService.Progress);

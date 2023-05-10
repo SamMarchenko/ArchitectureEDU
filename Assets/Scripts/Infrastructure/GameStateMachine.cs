@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeBase.Logic;
 using DefaultNamespace.Infrastructure.Services;
 using Infrastructure.Factory;
 using Infrastructure.Services.PersistentProgress;

@@ -1,5 +1,4 @@
-﻿using CodeBase.Logic;
-using DefaultNamespace.Infrastructure;
+﻿using DefaultNamespace.Infrastructure;
 using DefaultNamespace.Infrastructure.Services;
 using Logic;
 

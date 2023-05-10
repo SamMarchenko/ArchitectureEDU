@@ -1,5 +1,4 @@
-﻿using CodeBase.Logic;
-using DefaultNamespace.Infrastructure;
+﻿using DefaultNamespace.Infrastructure;
 using Infrastructure.Factory;
 using Infrastructure.Services.PersistentProgress;
 using Logic;

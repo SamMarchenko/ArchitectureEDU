@@ -1,4 +1,3 @@
-using CodeBase.Logic;
 using Infrastructure.States;
 using Logic;
 using UnityEngine;
@@ -14,6 +13,4 @@ public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
         _game.StateMachine.Enter<BootstrapState>();
         DontDestroyOnLoad(this);
     }
-
-   
 }
