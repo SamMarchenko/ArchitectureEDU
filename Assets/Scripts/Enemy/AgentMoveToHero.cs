@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace DefaultNamespace.Enemy
 {
-    public class AgentMoveToHero : MonoBehaviour
+    public class AgentMoveToHero : Follow
     {
         private const float MinimalDistance = 1f;
 
