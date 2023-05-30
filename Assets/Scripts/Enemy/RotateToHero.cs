@@ -1,30 +1,17 @@
-﻿using System;
-using DefaultNamespace.Infrastructure.Services;
-using Infrastructure.Factory;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotateToHero : Follow
 {
     public float Speed;
 
     private Transform _heroTransform;
-    private IGameFactory _gameFactory;
     private Vector3 _positionToLook;
-
-    private void Start()
+    
+    public void Construct(Transform heroTransform)
     {
-        _gameFactory = AllServices.Container.Single<IGameFactory>();
-
-        if (HeroExist())
-        {
-            InitializeHeroTransform();
-        }
-        else
-        {
-            _gameFactory.HeroCreated += InitializeHeroTransform;
-        }       
+        _heroTransform = heroTransform;
     }
-
+    
     private void Update()
     {
         if (Initialized())
@@ -53,8 +40,7 @@ public class RotateToHero : Follow
     }
 
     private bool Initialized() => _heroTransform != null;
+    
 
-    private void InitializeHeroTransform() => _heroTransform = _gameFactory.HeroGameObject.transform;
 
-    private bool HeroExist() => _gameFactory.HeroGameObject != null;
 }

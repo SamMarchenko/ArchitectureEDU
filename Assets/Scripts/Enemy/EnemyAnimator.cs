@@ -10,7 +10,7 @@ namespace DefaultNamespace.Enemy
         private static readonly int Hit = Animator.StringToHash("Hit");
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
         private static readonly int Speed = Animator.StringToHash("Speed");
-        private static readonly int Attack = Animator.StringToHash("Attack");
+        private static readonly int Attack = Animator.StringToHash("Attack_1");
 
         private readonly int _idleStateHash = Animator.StringToHash("idle");
         private readonly int _attackStateHash = Animator.StringToHash("attack01");

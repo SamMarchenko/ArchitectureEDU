@@ -2,9 +2,12 @@
 using DefaultNamespace.Infrastructure.Services;
 using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
+using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
+using Infrastructure.Services.Randomizer;
 using Infrastructure.Services.SaveLoad;
+using Logic.StaticData;
 using UnityEngine;
 
 namespace Infrastructure.States
@@ -39,13 +42,28 @@ namespace Infrastructure.States
 
         private void RegisterServices()
         {
+            RegisterStaticData();
+
             _services.RegisterSingle<IInputService>(InputService());
+            _services.RegisterSingle<IRandomService>(new RandomService());
             _services.RegisterSingle<IAssets>(new AssetsProvider());
-            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>()));
+            
+            var persistentProgressService = new PersistentProgressService();
+            _services.RegisterSingle<IPersistentProgressService>(persistentProgressService);
+            
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssets>(),
+                _services.Single<IStaticDataService>(), _services.Single<IRandomService>(),
+                persistentProgressService));
             _services.RegisterSingle<ISaveLoadService>(
                 new SaveLoadService(_services.Single<IPersistentProgressService>(),
                     _services.Single<IGameFactory>()));
+        }
+
+        private void RegisterStaticData()
+        {
+            IStaticDataService staticData = new StaticDataService();
+            staticData.LoadMonsters();
+            _services.RegisterSingle(staticData);
         }
 
         private static IInputService InputService() =>

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - InitPoint
   - LoadingCurtain
+  - FxTemporaire
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -21,9 +23,9 @@ TagManager:
   - 
   - Player
   - Aggro
-  - 
-  - 
-  - 
+  - AttackZone
+  - Hittable
+  - Pickup
   - 
   - 
   - 
