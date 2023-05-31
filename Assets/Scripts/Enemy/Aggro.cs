@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public class Aggro : MonoBehaviour
     {

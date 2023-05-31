@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public class AgentMoveToHero : Follow
     {

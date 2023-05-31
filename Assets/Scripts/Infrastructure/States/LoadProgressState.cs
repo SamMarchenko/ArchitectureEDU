@@ -1,5 +1,4 @@
-﻿using DefaultNamespace.Data;
-using DefaultNamespace.Infrastructure;
+﻿using Data;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.SaveLoad;
 

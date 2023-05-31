@@ -2,7 +2,7 @@
 using Logic;
 using UnityEngine;
 
-namespace DefaultNamespace.UI
+namespace UI
 {
     public class ActorUI : MonoBehaviour
     {

@@ -1,46 +1,48 @@
 ﻿using System;
 using System.Collections;
-using DefaultNamespace.Enemy;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyHealth), typeof(EnemyAnimator))]
-public class EnemyDeath : MonoBehaviour
+namespace Enemy
 {
-    public EnemyHealth Health;
-    public EnemyAnimator Animator;
-
-    public GameObject DeathFx;
-
-    public event Action Happend;
-
-    private void Start() => 
-        Health.HealthChanged += HealthChanged;
-
-    private void OnDestroy() => 
-        Health.HealthChanged -= HealthChanged;
-
-    private void HealthChanged()
+    [RequireComponent(typeof(EnemyHealth), typeof(EnemyAnimator))]
+    public class EnemyDeath : MonoBehaviour
     {
-        if (Health.Current <= 0) Die();
-    }
+        public EnemyHealth Health;
+        public EnemyAnimator Animator;
 
-    private void Die()
-    {
-        Animator.PlayDeath();
+        public GameObject DeathFx;
+
+        public event Action Happend;
+
+        private void Start() => 
+            Health.HealthChanged += HealthChanged;
+
+        private void OnDestroy() => 
+            Health.HealthChanged -= HealthChanged;
+
+        private void HealthChanged()
+        {
+            if (Health.Current <= 0) Die();
+        }
+
+        private void Die()
+        {
+            Animator.PlayDeath();
         
-        SpawnDeathFx();
-        StartCoroutine(DestroyTimer());
+            SpawnDeathFx();
+            StartCoroutine(DestroyTimer());
         
-        Happend?.Invoke();
-        Health.HealthChanged -= HealthChanged;
-    }
+            Happend?.Invoke();
+            Health.HealthChanged -= HealthChanged;
+        }
 
-    private void SpawnDeathFx() => 
-        Instantiate(DeathFx, transform.position, Quaternion.identity);
+        private void SpawnDeathFx() => 
+            Instantiate(DeathFx, transform.position, Quaternion.identity);
 
-    private IEnumerator DestroyTimer()
-    {
-        yield return new WaitForSeconds(3f);
-        Destroy(gameObject);
+        private IEnumerator DestroyTimer()
+        {
+            yield return new WaitForSeconds(3f);
+            Destroy(gameObject);
+        }
     }
 }

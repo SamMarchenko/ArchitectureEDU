@@ -1,4 +1,4 @@
-﻿using DefaultNamespace.Data;
+﻿using Data;
 using Infrastructure.Factory;
 using Infrastructure.Services.PersistentProgress;
 using UnityEngine;

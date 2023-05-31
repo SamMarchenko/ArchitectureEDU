@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     [Serializable]
     public class KillData

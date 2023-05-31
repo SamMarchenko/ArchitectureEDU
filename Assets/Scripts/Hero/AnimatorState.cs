@@ -1,8 +1,11 @@
-public enum AnimatorState
+namespace Hero
 {
-    Unknown,
-    Idle,
-    Attack,
-    Walking,
-    Died,
+    public enum AnimatorState
+    {
+        Unknown,
+        Idle,
+        Attack,
+        Walking,
+        Died,
+    }
 }

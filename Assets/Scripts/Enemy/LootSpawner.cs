@@ -1,9 +1,9 @@
-﻿using DefaultNamespace.Data;
+﻿using Data;
 using Infrastructure.Factory;
 using Infrastructure.Services.Randomizer;
 using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public class LootSpawner : MonoBehaviour
     {

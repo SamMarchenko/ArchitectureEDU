@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Enemy;
-using DefaultNamespace.UI;
+using Enemy;
 using Infrastructure.AssetManagment;
 using Infrastructure.Services;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.Randomizer;
 using Logic;
-using Logic.StaticData;
+using Logic.EnemySpawners;
+using StaticData;
+using UI;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -21,7 +22,9 @@ namespace Infrastructure.Factory
         private readonly IPersistentProgressService _progressService;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
+
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+
         private GameObject HeroGameObject { get; set; }
 
         public GameFactory(IAssets assets, IStaticDataService staticData, IRandomService randomService,
@@ -41,6 +44,16 @@ namespace Infrastructure.Factory
             }
 
             ProgressReaders.Add(progressReader);
+        }
+
+        public void CreateSpawner(Vector3 at, string id, MonsterTypeId monsterTypeId)
+        {
+            var spawner = InstantiateRegistered(AssetPath.Spawner, at)
+                .GetComponent<SpawnPoint>();
+            spawner.Construct(this);
+            
+            spawner.Id = id;
+            spawner.MonsterTypeId = monsterTypeId;
         }
 
         public GameObject CreateMonster(MonsterTypeId typeId, Transform parent)

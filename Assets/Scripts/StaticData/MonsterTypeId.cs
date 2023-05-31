@@ -1,4 +1,4 @@
-﻿namespace Logic.StaticData
+﻿namespace StaticData
 {
     public enum MonsterTypeId
     {

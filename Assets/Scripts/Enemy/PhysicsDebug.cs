@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public static class PhysicsDebug
     {

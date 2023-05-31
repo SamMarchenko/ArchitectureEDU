@@ -1,6 +1,4 @@
-﻿using Infrastructure.Factory;
-
-namespace DefaultNamespace.Infrastructure.Services
+﻿namespace Infrastructure.Services
 {
     public class AllServices
     {

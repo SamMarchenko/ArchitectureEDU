@@ -1,4 +1,6 @@
-﻿namespace Logic
+﻿using Hero;
+
+namespace Logic
 {
     public interface IAnimationStateReader
     {

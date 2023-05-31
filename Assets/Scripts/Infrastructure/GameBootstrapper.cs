@@ -2,15 +2,18 @@ using Infrastructure.States;
 using Logic;
 using UnityEngine;
 
-public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
+namespace Infrastructure
 {
-    public LoadingCurtain CurtainPrefab;
-    private Game _game;
-
-    private void Awake()
+    public class GameBootstrapper : MonoBehaviour, ICoroutineRunner
     {
-        _game = new Game(this, Instantiate(CurtainPrefab));
-        _game.StateMachine.Enter<BootstrapState>();
-        DontDestroyOnLoad(this);
+        public LoadingCurtain CurtainPrefab;
+        private Game _game;
+
+        private void Awake()
+        {
+            _game = new Game(this, Instantiate(CurtainPrefab));
+            _game.StateMachine.Enter<BootstrapState>();
+            DontDestroyOnLoad(this);
+        }
     }
 }

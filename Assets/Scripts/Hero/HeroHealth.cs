@@ -1,6 +1,5 @@
 ﻿using System;
-using CodeBase.Hero;
-using DefaultNamespace.Data;
+using Data;
 using Infrastructure.Services.PersistentProgress;
 using Logic;
 using UnityEngine;

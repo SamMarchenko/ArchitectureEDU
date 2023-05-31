@@ -1,13 +1,11 @@
-﻿using DefaultNamespace.Infrastructure;
-using DefaultNamespace.Infrastructure.Services;
-using Infrastructure.AssetManagment;
+﻿using Infrastructure.AssetManagment;
 using Infrastructure.Factory;
 using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using Infrastructure.Services.Randomizer;
 using Infrastructure.Services.SaveLoad;
-using Logic.StaticData;
+using StaticData;
 using UnityEngine;
 
 namespace Infrastructure.States

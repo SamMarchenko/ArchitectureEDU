@@ -2,7 +2,7 @@
 using Logic;
 using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     [RequireComponent(typeof(EnemyAnimator))]
     public class EnemyHealth : MonoBehaviour, IHealth

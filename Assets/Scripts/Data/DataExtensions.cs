@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     public static class DataExtensions
     {

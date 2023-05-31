@@ -1,8 +1,9 @@
 ﻿using System;
+using Hero;
 using Logic;
 using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public class EnemyAnimator : MonoBehaviour, IAnimationStateReader
     {

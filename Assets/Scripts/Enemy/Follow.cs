@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
-public abstract class Follow : MonoBehaviour
+namespace Enemy
 {
+    public abstract class Follow : MonoBehaviour
+    {
+    }
 }

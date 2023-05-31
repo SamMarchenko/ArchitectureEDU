@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     [RequireComponent(typeof(Attack))]
     public class CheckAttackRange : MonoBehaviour

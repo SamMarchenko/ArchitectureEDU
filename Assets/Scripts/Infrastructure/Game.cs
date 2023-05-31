@@ -1,15 +1,17 @@
-﻿using DefaultNamespace.Infrastructure;
-using DefaultNamespace.Infrastructure.Services;
+﻿using Infrastructure.Services;
 using Logic;
 
-public class Game
+namespace Infrastructure
 {
-    public GameStateMachine StateMachine;
-
-    public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
+    public class Game
     {
-        StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain, AllServices.Container);
-    }
+        public GameStateMachine StateMachine;
+
+        public Game(ICoroutineRunner coroutineRunner, LoadingCurtain loadingCurtain)
+        {
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), loadingCurtain, AllServices.Container);
+        }
 
    
+    }
 }

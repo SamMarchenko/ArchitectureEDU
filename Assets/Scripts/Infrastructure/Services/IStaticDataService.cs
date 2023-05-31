@@ -1,5 +1,4 @@
-﻿using DefaultNamespace.Infrastructure.Services;
-using Logic.StaticData;
+﻿using StaticData;
 
 namespace Infrastructure.Services
 {
@@ -7,5 +6,6 @@ namespace Infrastructure.Services
     {
         void LoadMonsters();
         MonsterStaticData ForMonster(MonsterTypeId typeId);
+        LevelStaticData ForLevel(string sceneKey);
     }
 }

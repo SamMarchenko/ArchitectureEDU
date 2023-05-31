@@ -1,33 +1,31 @@
-﻿using System;
-using DefaultNamespace.Data;
-using DefaultNamespace.Infrastructure.Services;
+﻿using Data;
+using Enemy;
 using Infrastructure.Factory;
 using Infrastructure.Services.PersistentProgress;
-using Logic.StaticData;
+using StaticData;
 using UnityEngine;
 
-namespace Logic
+namespace Logic.EnemySpawners
 {
-    public class EnemySpawner : MonoBehaviour, ISavedProgress
+    public class SpawnPoint : MonoBehaviour, ISavedProgress
     {
         public MonsterTypeId MonsterTypeId;
-        private string _id;
-
+        public string Id { get; set; }
+        
+        
         public bool _slain;
         private IGameFactory _factory;
         private EnemyDeath _enemyDeath;
-
         public bool Slain => _slain;
 
-        private void Awake()
+        public void Construct(IGameFactory factory)
         {
-            _id = GetComponent<UniqueId>().Id;
-            _factory = AllServices.Container.Single<IGameFactory>();
+            _factory = factory;
         }
 
         public void LoadProgress(PlayerProgress progress)
         {
-            if (progress.KillData.ClearedSpawners.Contains(_id))
+            if (progress.KillData.ClearedSpawners.Contains(Id))
                 _slain = true;
             else
                 Spawn();
@@ -50,7 +48,7 @@ namespace Logic
         public void UpdateProgress(PlayerProgress progress)
         {
             if (_slain)
-                progress.KillData.ClearedSpawners.Add(_id);
+                progress.KillData.ClearedSpawners.Add(Id);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using DefaultNamespace.Infrastructure.Services;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Infrastructure.Services.Input
 {

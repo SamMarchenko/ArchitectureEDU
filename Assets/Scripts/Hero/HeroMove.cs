@@ -1,12 +1,11 @@
-﻿using System;
-using DefaultNamespace.Data;
-using DefaultNamespace.Infrastructure.Services;
+﻿using Data;
+using Infrastructure.Services;
 using Infrastructure.Services.Input;
 using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace
+namespace Hero
 {
     public class HeroMove : MonoBehaviour, ISavedProgress
     {

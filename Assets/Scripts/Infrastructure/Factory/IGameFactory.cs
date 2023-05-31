@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DefaultNamespace.Enemy;
-using DefaultNamespace.Infrastructure.Services;
+using Enemy;
+using Infrastructure.Services;
 using Infrastructure.Services.PersistentProgress;
-using Logic.StaticData;
+using StaticData;
 using UnityEngine;
 
 namespace Infrastructure.Factory
@@ -11,10 +11,10 @@ namespace Infrastructure.Factory
     {
         GameObject CreateHero(GameObject at);
         GameObject CreateHUD();
+        void CreateSpawner(Vector3 at, string id, MonsterTypeId monsterTypeId);
         List<ISavedProgressReader> ProgressReaders { get; }
         List<ISavedProgress> ProgressWriters { get; }
         void Cleanup();
-        void Register(ISavedProgressReader savedProgress);
         GameObject CreateMonster(MonsterTypeId typeId, Transform parent);
         LootPiece CreateLoot();
     }

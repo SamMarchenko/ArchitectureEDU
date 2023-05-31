@@ -1,6 +1,4 @@
 ﻿using System;
-using CodeBase.Hero;
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Hero

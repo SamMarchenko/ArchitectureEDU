@@ -1,4 +1,4 @@
-﻿using DefaultNamespace.Data;
+﻿using Data;
 
 namespace Infrastructure.Services.PersistentProgress
 {

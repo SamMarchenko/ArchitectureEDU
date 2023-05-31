@@ -1,6 +1,4 @@
-﻿using DefaultNamespace.Infrastructure;
-
-namespace Infrastructure.States
+﻿namespace Infrastructure.States
 {
     public class GameLoopState : IState
     {

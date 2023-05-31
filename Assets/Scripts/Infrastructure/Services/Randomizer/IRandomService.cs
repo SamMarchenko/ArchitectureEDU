@@ -1,6 +1,4 @@
-﻿using DefaultNamespace.Infrastructure.Services;
-
-namespace Infrastructure.Services.Randomizer
+﻿namespace Infrastructure.Services.Randomizer
 {
   public interface IRandomService : IService
   {

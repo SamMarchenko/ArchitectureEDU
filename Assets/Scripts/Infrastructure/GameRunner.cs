@@ -1,15 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameRunner : MonoBehaviour
+namespace Infrastructure
 {
-    public GameBootstrapper BootstrapperPrefab;
-    private void Awake()
+    public class GameRunner : MonoBehaviour
     {
-        var bootstrapper = FindObjectOfType<GameBootstrapper>();
-        if (bootstrapper == null)
+        public GameBootstrapper BootstrapperPrefab;
+        private void Awake()
         {
-            Instantiate(BootstrapperPrefab);
+            var bootstrapper = FindObjectOfType<GameBootstrapper>();
+            if (bootstrapper == null)
+            {
+                Instantiate(BootstrapperPrefab);
+            }
         }
     }
 }

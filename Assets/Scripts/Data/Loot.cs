@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     [Serializable]
     public class Loot

@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEngine;
 
-namespace DefaultNamespace.Data
+namespace Data
 {
     [Serializable]
     public class WorldData

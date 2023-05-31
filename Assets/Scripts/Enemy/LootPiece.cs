@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using DefaultNamespace.Data;
+using Data;
 using TMPro;
 using UnityEngine;
 
-namespace DefaultNamespace.Enemy
+namespace Enemy
 {
     public class LootPiece : MonoBehaviour
     {

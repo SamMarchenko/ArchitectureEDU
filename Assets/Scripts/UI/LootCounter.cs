@@ -1,8 +1,8 @@
-﻿using DefaultNamespace.Data;
+﻿using Data;
 using TMPro;
 using UnityEngine;
 
-namespace DefaultNamespace.UI
+namespace UI
 {
     public class LootCounter : MonoBehaviour
     {
