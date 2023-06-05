@@ -8,6 +8,8 @@ using Logic;
 using Logic.EnemySpawners;
 using StaticData;
 using UI;
+using UI.Elements;
+using UI.Services.Windows;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -20,6 +22,7 @@ namespace Infrastructure.Factory
         private readonly IStaticDataService _staticData;
         private readonly IRandomService _randomService;
         private readonly IPersistentProgressService _progressService;
+        private readonly IWindowService _windowService;
 
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
 
@@ -28,12 +31,13 @@ namespace Infrastructure.Factory
         private GameObject HeroGameObject { get; set; }
 
         public GameFactory(IAssets assets, IStaticDataService staticData, IRandomService randomService,
-            IPersistentProgressService progressService)
+            IPersistentProgressService progressService, IWindowService windowService)
         {
             _assets = assets;
             _staticData = staticData;
             _randomService = randomService;
             _progressService = progressService;
+            _windowService = windowService;
         }
 
         public void Register(ISavedProgressReader progressReader)
@@ -51,7 +55,7 @@ namespace Infrastructure.Factory
             var spawner = InstantiateRegistered(AssetPath.Spawner, at)
                 .GetComponent<SpawnPoint>();
             spawner.Construct(this);
-            
+
             spawner.Id = id;
             spawner.MonsterTypeId = monsterTypeId;
         }
@@ -101,6 +105,10 @@ namespace Infrastructure.Factory
         {
             var hud = InstantiateRegistered(AssetPath.UiHUDPath);
             hud.GetComponentInChildren<LootCounter>().Construct(_progressService.Progress.WorldData);
+
+            foreach (var button in hud.GetComponentsInChildren<OpenWindowButton>()) 
+                button.Construct(_windowService);
+
             return hud;
         }
 

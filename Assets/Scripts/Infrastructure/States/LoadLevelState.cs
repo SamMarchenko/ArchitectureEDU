@@ -4,7 +4,8 @@ using Infrastructure.Services;
 using Infrastructure.Services.PersistentProgress;
 using Logic;
 using Logic.CameraLogic;
-using UI;
+using UI.Elements;
+using UI.Services.Factory;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,9 +22,16 @@ namespace Infrastructure.States
         private IGameFactory _gameFactory;
         private readonly IPersistentProgressService _progressService;
         private readonly IStaticDataService _staticData;
+        private readonly IUIFactory _uiFactory;
 
-        public LoadLevelState(GameStateMachine stateMachine, SceneLoader sceneLoader, LoadingCurtain curtain,
-            IGameFactory gameFactory, IPersistentProgressService progressService, IStaticDataService staticData)
+        public LoadLevelState(
+            GameStateMachine stateMachine,
+            SceneLoader sceneLoader,
+            LoadingCurtain curtain,
+            IGameFactory gameFactory,
+            IPersistentProgressService progressService,
+            IStaticDataService staticData,
+            IUIFactory uiFactory)
         {
             _stateMachine = stateMachine;
             _sceneLoader = sceneLoader;
@@ -31,6 +39,7 @@ namespace Infrastructure.States
             _gameFactory = gameFactory;
             _progressService = progressService;
             _staticData = staticData;
+           _uiFactory = uiFactory;
         }
 
         public void Enter(string sceneName)
@@ -45,6 +54,7 @@ namespace Infrastructure.States
 
         private void OnLoaded()
         {
+            InitUIRoot();
             InitGameWorld();
             InformProgressReaders();
             _stateMachine.Enter<GameLoopState>();
@@ -57,6 +67,9 @@ namespace Infrastructure.States
                 progressReader.LoadProgress(_progressService.Progress);
             }
         }
+
+        private void InitUIRoot() => 
+            _uiFactory.CreateUIRoot();
 
         private void InitGameWorld()
         {
