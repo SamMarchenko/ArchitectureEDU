@@ -3,7 +3,7 @@ using Infrastructure.Services.PersistentProgress;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Windows
+namespace UI.Windows.Shop
 {
     public abstract class WindowBase : MonoBehaviour
     {
