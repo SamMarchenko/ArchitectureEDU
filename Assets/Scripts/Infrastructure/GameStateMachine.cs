@@ -10,7 +10,7 @@ using UI.Services.Factory;
 
 namespace Infrastructure
 {
-  public class GameStateMachine
+  public class GameStateMachine : IGameStateMachine
   {
     private Dictionary<Type, IExitableState> _states;
     private IExitableState _activeState;

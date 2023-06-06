@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7d6422c342543b99a22fa6a3a953ba7, type: 3}
-  m_Name: Graveyard
+  m_Name: Dungeon
   m_EditorClassIdentifier: 
-  LevelKey: Main
-  EnemySpawners: []
-  InitialHeroPosition: {x: 11.06, y: 1.24, z: -13.93}
+  LevelKey: Dungeon
+  EnemySpawners:
+  - Id: _fb66838c-3e4a-4336-ae6d-ec1caad8a35e
+    MonsterTypeId: 0
+    Position: {x: 0, y: 0, z: 0}
+  InitialHeroPosition: {x: -4.19, y: 0.15, z: -18.41}

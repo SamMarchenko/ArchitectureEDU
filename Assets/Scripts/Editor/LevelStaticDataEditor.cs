@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 [CustomEditor(typeof(LevelStaticData))]
 public class LevelStaticDataEditor : UnityEditor.Editor
 {
-    private const string InitPointTag = "InitPoint";
+    private const string InitPointTag = "InitialPoint";
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
