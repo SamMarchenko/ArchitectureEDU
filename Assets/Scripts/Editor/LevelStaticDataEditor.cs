@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 [CustomEditor(typeof(LevelStaticData))]
 public class LevelStaticDataEditor : UnityEditor.Editor
 {
+    private const string InitPointTag = "InitPoint";
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -23,6 +24,8 @@ public class LevelStaticDataEditor : UnityEditor.Editor
                 .ToList();
 
             levelData.LevelKey = SceneManager.GetActiveScene().name;
+
+            levelData.InitialHeroPosition = GameObject.FindWithTag(InitPointTag).transform.position;
         }
         EditorUtility.SetDirty(target);
     }

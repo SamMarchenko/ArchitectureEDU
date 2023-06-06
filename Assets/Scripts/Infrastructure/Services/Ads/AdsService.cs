@@ -12,7 +12,6 @@ namespace Infrastructure.Services.Ads
         private const string RewardedVideoPlacementId = "Rewarded_Video";
 
         private string _gameId;
-        private bool _isRewardedVideoReady;
 
         public event Action RewardedVideoReady;
         private Action _onVideoFinished;
@@ -91,8 +90,6 @@ namespace Infrastructure.Services.Ads
                     Debug.Log($"OnUnityAdsShowComplete {showCompletionState}");
                     break;
             }
-        
-            _isRewardedVideoReady = false;
             _onVideoFinished = null;
         }
         
