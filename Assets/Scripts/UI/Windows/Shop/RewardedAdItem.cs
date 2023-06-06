@@ -36,13 +36,13 @@ namespace UI.Windows.Shop
 
         private void RefreshAvailableAd()
         {
-            //var videoReady = _adsService.IsRewardedVideoReady;
+            var videoReady = _adsService.IsRewardedVideoReady;
 
             foreach (var adActiveObject in AdActiveObjects) 
-                adActiveObject.SetActive(true);
+                adActiveObject.SetActive(videoReady);
             
-            //foreach (var adInactiveObject in AdInactiveObjects) 
-                //adInactiveObject.SetActive(!videoReady);
+            foreach (var adInactiveObject in AdInactiveObjects) 
+                adInactiveObject.SetActive(!videoReady);
         }
 
         private void OnShowAddClicked() => 
