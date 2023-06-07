@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using System.Threading.Tasks;
+using Data;
 using Infrastructure.Factory;
 using Infrastructure.Services.Randomizer;
 using UnityEngine;
@@ -30,9 +31,9 @@ namespace Enemy
             EnemyDeath.Happend += SpawnLoot;
         }
 
-        private void SpawnLoot()
+        private async void SpawnLoot()
         {
-            LootPiece loot = _factory.CreateLoot();
+            LootPiece loot = await _factory.CreateLoot();
             loot.transform.position = transform.position;
 
             var lootItem = GenerateLoot();

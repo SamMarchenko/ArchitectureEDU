@@ -1,4 +1,5 @@
-﻿using Infrastructure.AssetManagment;
+﻿using System.Threading.Tasks;
+using Infrastructure.AssetManagement;
 using Infrastructure.Services;
 using Infrastructure.Services.Ads;
 using Infrastructure.Services.PersistentProgress;
@@ -10,19 +11,19 @@ namespace UI.Services.Factory
 {
     public class UIFactory : IUIFactory
     {
-        private const string UIRootPath = "UI/UIRoot";
-        private IAssets _assets;
+        private const string UIRootPath = "UIRoot";
+        private IAssetProvider _assetProvider;
         private IStaticDataService _staticData;
         private Transform _uiRoot;
         private IPersistentProgressService _progressService;
         private readonly IAdsService _adsService;
 
-        public UIFactory(IAssets assets,
+        public UIFactory(IAssetProvider assetProvider,
             IStaticDataService staticData,
             IPersistentProgressService progressService,
             IAdsService adsService)
         {
-            _assets = assets;
+            _assetProvider = assetProvider;
             _staticData = staticData;
             _progressService = progressService;
             _adsService = adsService;
@@ -35,7 +36,10 @@ namespace UI.Services.Factory
             shopWindow.Construct(_adsService, _progressService);
         }
 
-        public void CreateUIRoot() => 
-            _uiRoot = _assets.Instantiate(UIRootPath).transform;
+        public async Task CreateUIRoot()
+        {
+            var root = await _assetProvider.Instantiate(UIRootPath);
+            _uiRoot = root.transform;
+        }
     }
 }
